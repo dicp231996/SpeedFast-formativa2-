@@ -1,0 +1,15 @@
+PedidoComida;COM-001;Av. San Pablo 4100, Quinta Normal
+PedidoComida;COM-002;Matucana 120, Estación Central
+PedidoComida;COM-003;Compañía de Jesús 2130, Santiago Centro
+PedidoComida;COM-004;Av. Brasil 450, Santiago Centro
+PedidoComida;COM-005;Catedral 1450, Santiago Centro
+PedidoEncomienda;ENC-001;Av. O'Higgins 3322, Estación Central;2.5
+PedidoEncomienda;ENC-002;Gran Avenida 4500, San Miguel;15.0
+PedidoEncomienda;ENC-003;Mapocho 3200, Quinta Normal;0.8
+PedidoEncomienda;ENC-004;Vicuña Mackenna 150, Providencia;25.5
+PedidoEncomienda;ENC-005;San Diego 430, Santiago Centro;5.2
+PedidoExpress;EXP-001;Agustinas 1200, Santiago Centro
+PedidoExpress;EXP-002;Bandera 150, Santiago Centro
+PedidoExpress;EXP-003;Paseo Huérfanos 830, Santiago Centro
+PedidoExpress;EXP-004;Moneda 1040, Santiago Centro
+PedidoExpress;EXP-005;Santo Domingo 1300, Santiago Centro
