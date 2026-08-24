@@ -6,18 +6,15 @@ import model.entities.dealer.Repartidor;
 
 public class PedidoComida extends Pedido {
 
-    // Constructor por defecto
     public PedidoComida() {
         super();
         this.setTipoPedido("Comida");
     }
 
-    // Constructor parametrizado
     public PedidoComida(String idPedido, String direccionEntrega) {
         super(idPedido, direccionEntrega, "Comida");
     }
 
-    // Validación de requisitos específicos para comida
     @Override
     protected boolean validarRequisitos(Repartidor candidato) {
         if (candidato.getTipoServicio() != TipoServicio.COMIDA) {
@@ -31,7 +28,22 @@ public class PedidoComida extends Pedido {
         return true;
     }
 
-    // Método toString
+    @Override
+    public void asignarRepartidor(Repartidor candidato) {
+        System.out.println("[Protocolo Comida] Iniciando evaluación estándar de repartidor para alimentos...");
+        super.asignarRepartidor(candidato);
+    }
+
+    public void asignarRepartidor(Repartidor candidato, String criterioAsignacion) {
+        System.out.println("[Protocolo Comida] Evaluando candidato bajo el criterio especial: " + criterioAsignacion);
+
+        if (criterioAsignacion.equalsIgnoreCase("Prioridad Alta")) {
+            System.out.println(" -> Notificación: Se requiere despacho inmediato para mantener la temperatura óptima.");
+        }
+
+        super.asignarRepartidor(candidato);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
