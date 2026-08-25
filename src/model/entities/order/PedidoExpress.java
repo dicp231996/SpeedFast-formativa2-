@@ -6,18 +6,26 @@ import model.entities.dealer.Repartidor;
 
 public class PedidoExpress extends Pedido {
 
-    // Constructor por defecto
     public PedidoExpress() {
         super();
         this.setTipoPedido("Express");
     }
 
-    // Constructor parametrizado
-    public PedidoExpress(String idPedido, String direccionEntrega) {
-        super(idPedido, direccionEntrega, "Express");
+    // Constructor actualizado: Incorpora distanciaKm y la envía a la clase padre
+    public PedidoExpress(String idPedido, String direccionEntrega, double distanciaKm) {
+        super(idPedido, direccionEntrega, "Express", distanciaKm);
     }
 
-    // Validación de requisitos específicos para pedido express
+    // Implementación del cálculo de tiempo con lógica condicional
+    @Override
+    public double calcularTiempoEntrega() {
+        double tiempoBase = 10.0;
+        if (this.getDistanciaKm() > 5.0) {
+            tiempoBase += 5.0; // Añade 5 minutos si supera los 5 km
+        }
+        return tiempoBase;
+    }
+
     @Override
     protected boolean validarRequisitos(Repartidor candidato) {
         if (candidato.getTipoServicio() != TipoServicio.COMPRA_EXPRESS) {
@@ -38,7 +46,6 @@ public class PedidoExpress extends Pedido {
         super.asignarRepartidor(candidato);
     }
 
-    // 2. SOBRECARGA (Overload)
     public void asignarRepartidor(Repartidor candidato, String criterioAsignacion) {
         System.out.println("[Protocolo Express] Evaluando candidato bajo el criterio especial: " + criterioAsignacion);
 
@@ -51,7 +58,12 @@ public class PedidoExpress extends Pedido {
         super.asignarRepartidor(candidato);
     }
 
-    // Método toString
+    @Override
+    public void mostrarResumen() {
+        super.mostrarResumen();
+        System.out.println("Nota de Despacho (Express): Prioridad máxima en ruta, transporte directo sin desvíos.");
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

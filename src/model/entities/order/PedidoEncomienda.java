@@ -8,20 +8,18 @@ public class PedidoEncomienda extends Pedido {
 
     private double pesoPaquete;
 
-    // Constructor por defecto
     public PedidoEncomienda() {
         super();
         this.setTipoPedido("Encomienda");
         this.pesoPaquete = 0.0;
     }
 
-    // Constructor parametrizado
-    public PedidoEncomienda(String idPedido, String direccionEntrega, double pesoPaquete) {
-        super(idPedido, direccionEntrega, "Encomienda");
+    // Constructor actualizado: Incorpora distanciaKm y la envía a la clase padre
+    public PedidoEncomienda(String idPedido, String direccionEntrega, double distanciaKm, double pesoPaquete) {
+        super(idPedido, direccionEntrega, "Encomienda", distanciaKm);
         this.pesoPaquete = pesoPaquete;
     }
 
-    // Getters y Setters para el atributo propio
     public double getPesoPaquete() {
         return pesoPaquete;
     }
@@ -30,7 +28,13 @@ public class PedidoEncomienda extends Pedido {
         this.pesoPaquete = pesoPaquete;
     }
 
-    // Validación de requisitos específicos para encomienda
+    // Implementación del cálculo de tiempo
+    @Override
+    public double calcularTiempoEntrega() {
+        // 20 minutos base + 1.5 minutos por km, redondeado hacia arriba
+        return Math.ceil(20.0 + (1.5 * this.getDistanciaKm()));
+    }
+
     @Override
     protected boolean validarRequisitos(Repartidor candidato) {
         if (candidato.getTipoServicio() != TipoServicio.ENCOMIENDA) {
@@ -46,7 +50,7 @@ public class PedidoEncomienda extends Pedido {
 
     @Override
     public void asignarRepartidor(Repartidor candidato) {
-        System.out.println("[Protocolo Encomienda] Iniciando evaluación estándar de repartidor para alimentos...");
+        System.out.println("[Protocolo Encomienda] Iniciando evaluación estándar de transporte de carga...");
         super.asignarRepartidor(candidato);
     }
 
@@ -62,7 +66,12 @@ public class PedidoEncomienda extends Pedido {
         super.asignarRepartidor(candidato);
     }
 
-    // Método toString
+    @Override
+    public void mostrarResumen() {
+        super.mostrarResumen();
+        System.out.println("Nota de Despacho (Encomienda): Verificar el peso en báscula (" + this.pesoPaquete + " kg) antes del traslado.");
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

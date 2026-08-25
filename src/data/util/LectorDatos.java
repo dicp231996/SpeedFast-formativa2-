@@ -28,23 +28,28 @@ public class LectorDatos {
                 String idPedido = datos[1];
                 String direccion = datos[2];
 
-                // Instanciación polimórfica basada en el tipo leído
+                // Todos los pedidos ahora requieren una distancia (índice 3)
+                double distanciaKm = Double.parseDouble(datos[3]);
+
+                // Instanciación basada en el tipo leído con los nuevos constructores
                 if (tipoPedido.equalsIgnoreCase("Comida")) {
-                    listaPedidos.add(new PedidoComida(idPedido, direccion));
+                    listaPedidos.add(new PedidoComida(idPedido, direccion, distanciaKm));
 
                 } else if (tipoPedido.equalsIgnoreCase("Encomienda")) {
-                    // El índice 3 existe solo en Encomienda (peso)
-                    double peso = Double.parseDouble(datos[3]);
-                    listaPedidos.add(new PedidoEncomienda(idPedido, direccion, peso));
+                    // El índice 4 ahora es exclusivo para el peso de la Encomienda
+                    double peso = Double.parseDouble(datos[4]);
+                    listaPedidos.add(new PedidoEncomienda(idPedido, direccion, distanciaKm, peso));
 
                 } else if (tipoPedido.equalsIgnoreCase("Express")) {
-                    listaPedidos.add(new PedidoExpress(idPedido, direccion));
+                    listaPedidos.add(new PedidoExpress(idPedido, direccion, distanciaKm));
                 }
             }
         } catch (IOException e) {
             System.err.println("Error de lectura en el archivo de pedidos: " + e.getMessage());
         } catch (NumberFormatException e) {
             System.err.println("Error de formato numérico en pedidos: " + e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("Error: Faltan datos en una línea del archivo de pedidos.");
         }
 
         return listaPedidos;

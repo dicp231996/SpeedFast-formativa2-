@@ -32,7 +32,7 @@ public class SpeedFast {
             for (int i = 0; i < listaRepartidores.size(); i++) {
                 Repartidor candidato = listaRepartidores.get(i);
 
-                // Volvemos a la ejecución polimórfica limpia
+                // Ejecución polimórfica de la asignación
                 pedido.asignarRepartidor(candidato);
 
                 if (pedido.getRepartidorAsignado() != null) {
@@ -47,7 +47,8 @@ public class SpeedFast {
         System.out.println("=========================================");
 
         for (Pedido pedido : listaPedidos) {
-            System.out.println(pedido.toString());
+            // Se reemplaza toString() por el nuevo método que incluye el cálculo del tiempo
+            pedido.mostrarResumen();
             System.out.println("--------------------------------------------------");
         }
 
