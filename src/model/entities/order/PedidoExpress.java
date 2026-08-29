@@ -27,7 +27,7 @@ public class PedidoExpress extends Pedido {
     }
 
     @Override
-    protected boolean validarRequisitos(Repartidor candidato) {
+    public boolean validarRequisitos(Repartidor candidato) {
         if (candidato.getTipoServicio() != TipoServicio.COMPRA_EXPRESS) {
             System.out.println(" - Fallo: El repartidor no ofrece el servicio Express.");
             return false;

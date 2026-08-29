@@ -36,7 +36,7 @@ public class PedidoEncomienda extends Pedido {
     }
 
     @Override
-    protected boolean validarRequisitos(Repartidor candidato) {
+    public boolean validarRequisitos(Repartidor candidato) {
         if (candidato.getTipoServicio() != TipoServicio.ENCOMIENDA) {
             System.out.println(" - Fallo: El repartidor no ofrece el servicio de Encomienda.");
             return false;

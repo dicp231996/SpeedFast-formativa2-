@@ -24,7 +24,7 @@ public class PedidoComida extends Pedido {
     }
 
     @Override
-    protected boolean validarRequisitos(Repartidor candidato) {
+    public boolean validarRequisitos(Repartidor candidato) {
         if (candidato.getTipoServicio() != TipoServicio.COMIDA) {
             System.out.println(" - Fallo: El repartidor no ofrece el servicio de Comida.");
             return false;

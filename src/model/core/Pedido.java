@@ -47,7 +47,7 @@ public abstract class Pedido {
     // =========================================================
     // MÉTODOS ABSTRACTOS
     // =========================================================
-    protected abstract boolean validarRequisitos(Repartidor candidato);
+    public abstract boolean validarRequisitos(Repartidor candidato);
 
     // Nuevo método: Obliga a cada tipo de pedido a definir cómo calcula su tiempo
     public abstract double calcularTiempoEntrega();
