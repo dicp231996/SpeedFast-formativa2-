@@ -12,28 +12,33 @@ Objetivo de la actividad es practicar la herencia de clases abstractas, junto co
 ## Estructura del Proyecto
 
 ```text
-.
 ├── resources/
 │   ├── pedidos.txt
 │   └── repartidores.txt
 └── src/
     ├── app/
-    │   └── SpeedFast
+    │   └── SpeedFast.java
     ├── data/
     │   ├── enumerate/
+    │   │   └── TipoServicio.java
     │   └── util/
-    │       ├── GestorInstancias
-    │       └── LectorDatos
-    └── model/
-        ├── core/
-        │   ├── Pedido
-        │   └── Persona
-        ├── entities/
-        │   ├── dealer/
-        │   │   └── Repartidor
-        │   └── order/
-        │       ├── PedidoComida
-        │       ├── PedidoEncomienda
-        │       └── PedidoExpress
-        ├── interfaces/
-        └── valueobjects/
+    │       ├── ControladorEnvios.java
+    │       ├── GestorInstancias.java
+    │       └── LectorDatos.java
+    ├── model/
+    │   ├── core/
+    │   │   ├── Pedido.java
+    │   │   └── Persona.java
+    │   ├── entities/
+    │   │   ├── dealer/
+    │   │   │   └── Repartidor.java
+    │   │   └── order/
+    │   │       ├── PedidoComida.java
+    │   │       ├── PedidoEncomienda.java
+    │   │       └── PedidoExpress.java
+    │   ├── interfaces/
+    │   │   ├── Asignable.java
+    │   │   ├── Cancelable.java
+    │   │   └── Historial.java
+    │   └── valueobjects/
+    └── ui/
