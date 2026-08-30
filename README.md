@@ -5,8 +5,7 @@
 
 El proyecto ha sido desarrollado bajo los principios de la Programación Orientada a Objetos, implementando una arquitectura estructurada que separa la lógica del dominio (entidades, modelos principales y objetos de valor) de la persistencia de datos y utilidades. La carga de información inicial se realiza dinámicamente mediante la lectura de archivos de texto sin formato.
 
-Objetivo de la actividad es practicar la herencia de clases abstractas, junto con la elaboracion de metodos abstractos comunes entre las clases hijas.
-
+Objetivo de la actividad es trabajar con interfases comunes para las diferentes clases.
 ---
 
 ## Estructura del Proyecto
